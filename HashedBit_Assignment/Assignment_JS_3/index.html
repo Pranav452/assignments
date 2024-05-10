@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Problems</title>
+</head>
+<body>
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div>
+      <h1>JavaScript Problems</h1>
+      <p style="font-size: 1em; font-weight: bold;">Open the browser console to see the outputs.</p>
+    </div>
+  </div>
+  <script>
+    // Q1
+    const states = ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
+
+    const statesWithoutVowels = states.filter(state => !/^[aeiou]/i.test(state));
+    console.log(statesWithoutVowels);
+
+    // Q2
+    let str = 'I love my India';
+    let expected = str.split(' ').reverse().join(' ');
+    console.log(expected); // Output: 'India my love I'
+
+    // Q3
+    let string = 'INDIA';
+    string = string.split('');
+    string.splice(4, 0, 'N', 'E', 'S', 'I', 'A');
+    string = string.join('');
+    console.log(string); // Output: 'INDONESIA'
+
+    // Q4
+    function countConsonantsVowels(str) {
+      let vowels = 0, consonants = 0;
+      for (let char of str) {
+        if (/[aeiou]/i.test(char)) {
+          vowels++;
+        } else if (/[a-z]/i.test(char)) {
+          consonants++;
+        }
+      }
+      console.log(`Vowels: ${vowels}, Consonants: ${consonants}`);
+    }
+
+    countConsonantsVowels('This is a long string for testing');
+
+    // Q5
+    function correctfn(string, wrong, correct) {
+      return string.replace(new RegExp(wrong, 'gi'), correct);
+    }
+
+    console.log(correctfn('The quik brown fox jumps over the lazy dog', 'quik', 'quick'));
+
+    // Q6
+    const inputArr = [1, 2, 3, 9, 10, 7, 5, 4, 3];
+    const answer = inputArr.filter(num => num > 5);
+    console.log(answer); // Output: [9, 10, 7]
+
+    // Q7
+    const students = [
+      { name: "Ram", scores: [80, 70, 60] },
+      { name: "Mohan", scores: [80, 70, 90] },
+      { name: "Sai", scores: [60, 70, 80] },
+      { name: "Hemang", scores: [90, 90, 80, 80] },
+    ];
+
+    const output = students.map(student => {
+      const average = student.scores.reduce((a, b) => a + b, 0) / student.scores.length;
+      return { name: student.name, average: Math.round(average) };
+    });
+
+    console.log(output);
+
+    // Q8
+    function sumDigits(num) {
+      if (num < 10) return num;
+      const digits = num.toString().split('').map(Number);
+      const sum = digits.reduce((a, b) => a + b, 0);
+      return sumDigits(sum);
+    }
+
+    console.log(sumDigits(456)); // Output: 6
+
+    // Q9
+    function countWords(paragraph) {
+      const words = paragraph.split(/\s+/);
+      return words.length;
+    }
+
+    console.log(countWords('This is a sample paragraph with some words.'));
+
+    // Q10
+    function reverseString(str) {
+      return str.split('').reverse().join('');
+    }
+
+    console.log(reverseString('Hello')); // Output: 'olleH'
+
+    // Q11
+    const input = [
+      {
+        student1: {
+          subject1: 44,
+          subject2: 56,
+          subject3: 87,
+          subject4: 97,
+          subject5: 37
+        }
+      },
+      {
+        student2: {
+          subject1: 44,
+          subject2: 56,
+          subject3: 87,
+          subject4: 97,
+          subject5: 37
+        }
+      },
+      {
+        student3: {
+          subject1: 44,
+          subject2: 56,
+          subject3: 87,
+          subject4: 97,
+          subject5: 37
+        }
+      }
+    ];
+
+    const outputs = input.map(student => {
+      const studentName = Object.keys(student)[0];
+      const subjects = Object.values(student)[0];
+      const average = Object.values(subjects).reduce((a, b) => a + b, 0) / Object.values(subjects).length;
+      return { [studentName]: { average } };
+    });
+
+    console.log(output);
+  </script>
+</body>
+</html>
